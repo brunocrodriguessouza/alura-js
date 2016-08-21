@@ -1,24 +1,27 @@
-tdPeso1 = document.getElementById("peso-1");
-tdPeso1 = document.getElementById("altura-1");
-
-tdPeso2 = document.getElementById("peso-2");
-tdAltura2 = document.getElementById("altura-2");
-
 //calcula-imc.js
 
-var tdPeso = document.getElementById("peso-2");
-var tdAltura = document.getElementById("altura-2");
+var trPacientes = document.getElementsByClassName("paciente"); //Array de trs
 
-var paciente = {peso : tdPeso.textContent, altura : tdAltura.textContent};
+for(var posicaoAtual = 0; posicaoAtual <= trPacientes.length - 1; posicaoAtual++) {
 
-if(paciente.altura != 0){
-    var imc = paciente.peso / (paciente.altura * paciente.altura);
+    var pacienteTr = trPacientes[posicaoAtual];
 
-    //buscando o elemento "imc-2"
-    var tdImc = document.getElementById("imc-2"); 
-    tdImc.textContent = imc; //atualizando o elemento com o IMC calculado
+    var tdNome = pacienteTr.getElementsByClassName("info-nome")[0];
+    var tdPeso = pacienteTr.getElementsByClassName("info-peso")[0];
+    var tdAltura = pacienteTr.getElementsByClassName("info-altura")[0];
 
-    console.log(imc);
-} else{
-    console.log("Não posso executar uma divisão por 0!");
+    var paciente = {nome : tdNome.textContent, peso : tdPeso.textContent, altura : tdAltura.textContent};
+
+    if(paciente.altura != 0){
+
+        var imc = paciente.peso / (paciente.altura * paciente.altura);
+
+        var tdImc = pacienteTr.getElementsByClassName("info-imc")[0]; 
+        tdImc.textContent = imc;
+
+        console.log(imc);
+    } else{
+        console.log("Não posso executar uma divisão por 0!");
+    }
 }
+
